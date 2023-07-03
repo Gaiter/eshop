@@ -1,10 +1,7 @@
 package com.example.eshop.entity;
 
 import com.example.eshop.enums.OrderStatus;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

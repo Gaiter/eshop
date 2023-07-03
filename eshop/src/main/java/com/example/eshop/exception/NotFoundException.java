@@ -1,4 +1,4 @@
-package com.example.eshop.exeption;
+package com.example.eshop.exception;
 
 public class NotFoundException extends RuntimeException {
 

@@ -1,10 +1,7 @@
 package com.example.eshop.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -20,9 +17,7 @@ public class Payment {
     @GenericGenerator(name="paymentgen" , strategy="increment")
     @GeneratedValue(generator="paymentgen")
     private Long id;
-
     private Long sum;
-
     private LocalDateTime dateTime;
 
     @ManyToOne

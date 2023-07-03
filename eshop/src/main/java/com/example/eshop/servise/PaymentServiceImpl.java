@@ -2,8 +2,8 @@ package com.example.eshop.servise;
 
 import com.example.eshop.entity.Payment;
 import com.example.eshop.enums.EventType;
-import com.example.eshop.exeption.NotFoundException;
-import com.example.eshop.exeption.UnprocessableEntityException;
+import com.example.eshop.exception.NotFoundException;
+import com.example.eshop.exception.UnprocessableEntityException;
 import com.example.eshop.repository.PaymentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

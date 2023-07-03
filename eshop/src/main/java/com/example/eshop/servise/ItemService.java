@@ -1,11 +1,12 @@
 package com.example.eshop.servise;
 
+import com.example.eshop.dto.ItemDto;
 import com.example.eshop.entity.Item;
 
 import java.util.List;
 
 public interface ItemService {
-    Item get(Long id);
+    ItemDto get(Long id);
 
     List<Item> getAll();
 

@@ -1,4 +1,4 @@
-package com.example.eshop.exeption;
+package com.example.eshop.exception;
 
 public class WrongStatusException extends RuntimeException{
     public WrongStatusException() {

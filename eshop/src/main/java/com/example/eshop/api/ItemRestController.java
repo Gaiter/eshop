@@ -1,5 +1,6 @@
 package com.example.eshop.api;
 
+import com.example.eshop.dto.ItemDto;
 import com.example.eshop.entity.Item;
 import com.example.eshop.servise.ItemService;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ public class ItemRestController {
     private ItemService itemService;
 
     @GetMapping("/{id}")
-    public Item get(@PathVariable Long id) {
+    public ItemDto get(@PathVariable Long id) {
         return itemService.get(id);
     }
 

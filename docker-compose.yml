@@ -1,10 +1,11 @@
+version: '3'
+
 services:
   db-logs:
     image: mysql:latest
     container_name: db-logs
     cap_add:
       - SYS_NICE
-    restart: always
     environment:
       MYSQL_DATABASE: 'db'
       MYSQL_USER: 'user'
@@ -12,6 +13,40 @@ services:
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
       - '3306:3306'
+    networks:
+      - lo
+
+  microservice:
+    container_name: microservice
+    image: gaiter1984/microservice:0.0.3-SNAPSHOT
+    depends_on:
+      - db-logs
+      - kafka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-logs:3306/db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+      - KAFKA_BOOTSTRAP_SERVER=kafka:9092
+    ports:
+      - "8100:8090"
+    networks:
+      - lo
+
+  eshop:
+    container_name: eshop
+    build: gaiter1984/eshop:0.0.3-SNAPSHOT
+    depends_on:
+      - db-logs
+      - kafka
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-logs:3306/db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+      - KAFKA_BOOTSTRAP_SERVER=kafka:9092
+    ports:
+      - "8080:8080"
+    networks:
+      - lo
 
   zookeeper:
     container_name: zookeeper

@@ -1,4 +1,4 @@
-package com.example.eshop.exeption;
+package com.example.eshop.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,12 +1,14 @@
 package com.example.eshop.servise;
 
+import com.example.eshop.dto.ItemDto;
 import com.example.eshop.entity.Item;
 import com.example.eshop.entity.Order;
 import com.example.eshop.enums.EventType;
 import com.example.eshop.enums.OrderStatus;
-import com.example.eshop.exeption.NotFoundException;
-import com.example.eshop.exeption.UnprocessableEntityException;
-import com.example.eshop.exeption.WrongStatusException;
+import com.example.eshop.exception.NotFoundException;
+import com.example.eshop.exception.UnprocessableEntityException;
+import com.example.eshop.exception.WrongStatusException;
+import com.example.eshop.mapper.ItemMapper;
 import com.example.eshop.repository.ItemRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,12 +22,13 @@ public class ItemServiceImpl implements ItemService {
     private ItemRepository itemRepository;
     private OrderService orderService;
     private EventService eventService;
+    private ItemMapper itemMapper;
 
     @Override
-    public Item get(Long id) {
-        Item item = itemRepository.findById(id).orElseThrow(NotFoundException::new);
+    public ItemDto get(Long id) {
+        ItemDto itemDto = itemMapper.toDto(itemRepository.findById(id).orElseThrow(NotFoundException::new));
         eventService.sendEvent(EventType.GET, Item.class.getName());
-        return item;
+        return itemDto;
     }
 
     @Override
@@ -57,7 +60,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void update(Item item) {
-        Item itemDb = get(item.getId());
+        Item itemDb = itemRepository.findById(item.getId()).orElseThrow(NotFoundException::new);
         item.setOrder(itemDb.getOrder());
         eventService.sendEvent(EventType.UPDATE, Item.class.getName());
         itemRepository.saveAndFlush(item);
