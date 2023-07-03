@@ -34,7 +34,7 @@ services:
 
   eshop:
     container_name: eshop
-    build: gaiter1984/eshop:0.0.3-SNAPSHOT
+    image: gaiter1984/eshop:0.0.3-SNAPSHOT
     depends_on:
       - db-logs
       - kafka
@@ -70,7 +70,7 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9093,LISTENER_EXTERNAL://localhost:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9093,LISTENER_EXTERNAL://kafka:9092
       KAFKA_LISTENERS: PLAINTEXT://:9093,LISTENER_EXTERNAL://:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,LISTENER_EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT

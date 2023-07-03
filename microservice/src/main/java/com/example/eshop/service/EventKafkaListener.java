@@ -15,7 +15,6 @@ public class EventKafkaListener implements EventService {
     @Override
     @KafkaListener(topics = "event")
     public void handle(Event event) {
-        System.out.println(event.toString());
         eventRepository.saveAndFlush(event);
     }
 }
