@@ -1,9 +1,7 @@
 package com.example.eshop.mapper;
 
 import com.example.eshop.dto.ItemDto;
-import com.example.eshop.dto.OrderDto;
 import com.example.eshop.entity.Item;
-import com.example.eshop.entity.Order;
 import org.mapstruct.Mapper;
 
 import java.util.List;

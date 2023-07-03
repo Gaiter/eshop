@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getAll() {
         List<Order> orders = orderRepository.findAll();
         eventService.sendEvent(EventType.GETALL, Order.class.getName());
-        return orderRepository.findAll();
+        return orders;
     }
 
     @Override

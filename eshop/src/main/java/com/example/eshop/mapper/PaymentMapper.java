@@ -1,8 +1,6 @@
 package com.example.eshop.mapper;
 
-import com.example.eshop.dto.ItemDto;
 import com.example.eshop.dto.PaymentDto;
-import com.example.eshop.entity.Item;
 import com.example.eshop.entity.Payment;
 import org.mapstruct.Mapper;
 
